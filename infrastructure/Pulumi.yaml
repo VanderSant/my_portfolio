@@ -1,0 +1,11 @@
+name: portfolio
+description: Vandersons personal portfolio
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: venv
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: static-website-aws-python
