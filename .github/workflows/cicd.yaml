@@ -1,0 +1,40 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+env:
+  bucket: personal-portfolio-3c95c3e
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-24.04
+    steps:
+    - name: ℹ️ Information
+      env:
+        BRANCH: ${{ github.event.inputs.branch }}
+      run: |
+        if [ -n "$BRANCH" ]
+        then
+          echo Deploying "$BRANCH" for "$DEPLOYMENT_NAME"
+        else
+          echo Deploying default branch for "$DEPLOYMENT_NAME"
+        fi
+    - name: 📌 Git Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.branch }}
+    - name: 💭 Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    - name: 📁 Sync with S3
+      run: |
+        aws s3 sync ./application/ s3://${{ PORTFOLIO_BUCKET }} --delete --quiet
+    - name: 🚫 Invalidate Distribution
+      run: |
+        echo Invalidation usually takes about 10-15 minutes, depending on the size of the request.
+        aws configure set preview.cloudfront true
+        aws cloudfront create-invalidation --distribution-id ${{ CLOUDFRONT_DIST }} --paths '/*'

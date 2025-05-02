@@ -109,6 +109,6 @@ cdn = aws.cloudfront.Distribution(
 
 # Export the URLs and hostnames of the bucket and distribution.
 pulumi.export("originURL", pulumi.Output.concat("http://", bucket_website.website_endpoint))
-pulumi.export("originHostname", bucket.website_endpoint)
+pulumi.export("originHostname", bucket_website.website_endpoint)
 pulumi.export("cdnURL", pulumi.Output.concat("https://", cdn.domain_name))
 pulumi.export("cdnHostname", cdn.domain_name)

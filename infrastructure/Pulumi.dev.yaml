@@ -3,5 +3,5 @@ config:
   portfolio:errorDocument: error.html
   portfolio:indexDocument: index.html
   portfolio:path: ../application
-  portfolio:bucket_name: personal_portfolio
+  portfolio:bucket_name: personal-portfolio
   aws:profile: personal
