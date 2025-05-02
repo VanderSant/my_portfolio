@@ -32,9 +32,9 @@ jobs:
         aws-region: us-east-1
     - name: 📁 Sync with S3
       run: |
-        aws s3 sync ./application/ s3://${{ PORTFOLIO_BUCKET }} --delete --quiet
+        aws s3 sync ./application/ s3://$PORTFOLIO_BUCKET --delete --quiet
     - name: 🚫 Invalidate Distribution
       run: |
         echo Invalidation usually takes about 10-15 minutes, depending on the size of the request.
         aws configure set preview.cloudfront true
-        aws cloudfront create-invalidation --distribution-id ${{ CLOUDFRONT_DIST }} --paths '/*'
+        aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DIST --paths '/*'
