@@ -1,7 +1,6 @@
 config:
   aws:region: us-east-1
-  portfolio:errorDocument: error.html
-  portfolio:indexDocument: index.html
   portfolio:path: ../application
-  portfolio:bucket_name: personal-portfolio
+  portfolio:domain: vandersonsantos.org
+  portfolio:subdomain: portfolio
   aws:profile: personal
