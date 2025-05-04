@@ -10,7 +10,7 @@
 :root {
   /* Colors */
   --primary-color: #9b0000;
-  --secondary-color: #ffd35c;
+  --secondary-color: #FF1B1B;
   --bg-primary: #ffffff;
   --text-color: #222222;
   --text-color-two: #ffffff;
@@ -34,7 +34,7 @@
 
 [data-theme="dark"] {
   --primary-color: #9b0000;
-  --secondary-color: #ffd35c;
+  --secondary-color: #FF1B1B;
   --bg-primary: #000000;
   --text-color: #ffffff;
   --text-color-two: #222222;
@@ -44,7 +44,6 @@
   --shadow: 0 2px 10px rgba(95, 95, 95, 0.2);
   --special_buttom: #ffffff;
 }
-
 
 /* .container_absulute {
   position: absolute;
